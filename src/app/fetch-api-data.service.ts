@@ -14,7 +14,7 @@ const apiUrl = 'https://movie-api-myflixdb.herokuapp.com/';
 export class FetchApiDataService {
   // Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class, making it available via this.http
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
   }
   // Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
@@ -105,7 +105,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     return this.http
-      .post(apiUrl + 'users/' + user + '/movies/' + id, null, {
+      .post(apiUrl + 'users/' + user + '/movies/' + id, id,  {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -125,7 +125,7 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  public deleteUser(): Observable<any> {
+  public deleteUser(username: any): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     return this.http
@@ -166,6 +166,6 @@ export class FetchApiDataService {
         `Error body is: ${error.error}`);
     }
     return throwError(
-    'Something bad happened; please try again later.');
+    'Something bad happened.');
   }
 }

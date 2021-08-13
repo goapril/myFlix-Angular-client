@@ -1,0 +1,30 @@
+.container {
+  display: grid;
+  padding: 0 10px;
+  margin-top: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.images {
+  padding: 0 10%;
+}
+
+.card {
+  background-color: black;
+  color: white;
+}
+
+.director {
+  color: white;
+}
+
+
+.links {
+  display: flex;
+}
+
+.favorite-button {
+  transform: scale(1.2);
+}
