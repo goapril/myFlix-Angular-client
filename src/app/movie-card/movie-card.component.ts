@@ -12,6 +12,7 @@ import { SynopsisComponent } from '../synopsis/synopsis.component';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
+  user: any = {};
   movies: any[] = [];
   favoriteMovieIds: any[] = [];
 
@@ -50,9 +51,9 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  addFavoriteMovie(id: string, title: string): void {
+  addFavoriteMovie(id: string): void {
     this.fetchApiData.addFavoriteMovie(id).subscribe(() => {
-      this.snackBar.open(`${title} has been added to your favorites!`, 'OK', {
+      this.snackBar.open(`Movie has been added to your favorites!`, 'OK', {
         duration: 2000,
       });
     });

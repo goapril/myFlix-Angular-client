@@ -20,8 +20,7 @@ export class ProfileDeleteComponent implements OnInit {
   }
 
   deleteUser(): void {
-    const username: any = localStorage.getItem('username');
-    this.fetchApiData.deleteUser(username).subscribe(() => {
+    this.fetchApiData.deleteUser().subscribe(() => {
       this.snackBar.open('Your account has been deleted!', 'OK',
         { duration: 3000,}
       );

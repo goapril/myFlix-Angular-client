@@ -42,17 +42,14 @@ export class UserProfileComponent implements OnInit {
   }
 
   filterFavorites(): void {
-    this.movies.forEach((movie: any) => {
-      if (this.user.FavoriteMovies.includes(movie._id)) {
-        this.favorites.push(movie);
-      }
-    });
+    this.favorites = this.movies.filter((movie: any) =>
+      this.user.FavoriteMovies.includes(movie._id)
+    );
     return this.favorites;
   }
 
   deleteMovie(id: string, title: string): void {
     this.fetchApiData.deleteMovie(id).subscribe((resp: any) => {
-      localStorage.setItem('FavoriteMovies', JSON.stringify(resp.FavoriteMovies))
       this.snackBar.open(`${title} has been removed from your favorites!`, 'OK', {
         duration: 2000
       });
