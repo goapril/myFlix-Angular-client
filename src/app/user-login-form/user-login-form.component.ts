@@ -28,7 +28,7 @@ export class UserLoginFormComponent implements OnInit {
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
       // Store current user and token in localStorage.
-      localStorage.setItem('username', response.user.Username);
+      localStorage.setItem('user', response.user.Username);
       localStorage.setItem('token', response.token);
 
       // Logic for a successful user login goes here! (To be implemented)
