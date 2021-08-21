@@ -113,11 +113,11 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
   
-  public editUser(): Observable<any> {
+  public editUser(userData: object): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     return this.http
-      .put(apiUrl + 'users/' + user, {
+      .put(apiUrl + 'users/' + user, userData, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -164,6 +164,7 @@ export class FetchApiDataService {
     console.error(
         `Error Status code ${error.status}, ` +
         `Error body is: ${error.error}`);
+    console.log(error);
     }
     return throwError(
     'Something bad happened.');

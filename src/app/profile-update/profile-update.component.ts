@@ -22,19 +22,18 @@ export class ProfileUpdateComponent implements OnInit {
   }
 
   editUser(): void {
-    this.fetchApiData.editUser().subscribe((resp) => {
+    this.fetchApiData.editUser(this.userData).subscribe((resp) => {
       this.dialogRef.close();
-      localStorage.setItem('user', resp.Username);
-      this.snackBar.open('Profile is updated successfully!', 'OK', {
-        duration: 2000
-      });
+      localStorage.setItem('user', this.userData.Username);
+      window.location.reload();
+          this.snackBar.open('Profile is updated successfully!', 'OK', {
+          duration: 2000
+          });
+          
     }, (resp) => {
       this.snackBar.open(resp, 'OK', {
         duration: 2000
       });
     });
-    setTimeout(function () {
-      window.location.reload();
-    }, 1000);
   }
 }
