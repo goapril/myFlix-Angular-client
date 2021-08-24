@@ -1,21 +1,24 @@
 .profile-container {
-  //display: grid;
-  padding: 0 10px;
-  margin-top: 10px;
-  //grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  //grid-auto-rows: minmax(200px, auto);
-  
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 5px;
 }
 
-.movies-container {
-  //display: grid;
+.favorite-container {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 5px;
+}
+
+.card-container {
+  display: grid;
   padding: 0 10px;
   margin-top: 10px;
-  //grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
-  //grid-auto-rows: minmax(200px, auto);
-  
+  grid-auto-rows: minmax(100px, auto);
 }
 
 .card {
