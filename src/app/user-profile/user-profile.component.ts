@@ -31,6 +31,7 @@ export class UserProfileComponent implements OnInit {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
       this.getMovies();
+      console.log(this.user);
     });
   }
 
@@ -38,6 +39,7 @@ export class UserProfileComponent implements OnInit {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
       this.filterFavorites();
+      console.log(this.user);
     });
   }
 
@@ -45,7 +47,9 @@ export class UserProfileComponent implements OnInit {
     this.favorites = this.movies.filter((movie: any) =>
       this.user.FavoriteMovies.includes(movie._id)
     );
+    console.log(this.user.FavoriteMovies);
     return this.favorites;
+    
   }
 
   deleteMovie(id: string, title: string): void {
