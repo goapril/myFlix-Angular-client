@@ -12,6 +12,11 @@ export class SynopsisComponent implements OnInit {
     public data: {
       title: string;
       description: string;
+      director: string;
+      genre: string;
+      releaseYear: number;
+      imdbRating: number;
+      actors: string;
     }
   ) {}
 
