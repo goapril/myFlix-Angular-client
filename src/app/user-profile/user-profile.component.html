@@ -4,7 +4,7 @@
   <div class="profile-container">
       <h1 class="header-title">Profile Data</h1>
       <div class="box1">
-        <h3>Username: <span> {{ user.Username }} </span></h3>
+        <h3>Username: {{ user.Username }}</h3>
         <h3>Password: ********</h3>
         <h3>Email: {{ user.Email }}</h3>
         <h3>Birthday: {{ user.Birthday | date : 'MM/dd/yyyy' : 'UTC' }}</h3>
