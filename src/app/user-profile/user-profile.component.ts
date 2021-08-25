@@ -4,6 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProfileUpdateComponent } from '../profile-update/profile-update.component';
 import { ProfileDeleteComponent } from '../profile-delete/profile-delete.component';
+import { GenreComponent } from '../genre/genre.component';
+import { DirectorComponent } from '../director/director.component';
+import { SynopsisComponent } from '../synopsis/synopsis.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -49,7 +52,6 @@ export class UserProfileComponent implements OnInit {
     );
     console.log(this.user.FavoriteMovies);
     return this.favorites;
-    
   }
 
   deleteMovie(id: string, title: string): void {
@@ -74,4 +76,23 @@ export class UserProfileComponent implements OnInit {
       width: '280px'
     });
   }
+
+  showGenre(name: string, description: string): void {
+    this.dialog.open(GenreComponent, {
+      data: { name, description },
+    });
+  }
+
+  showDirector(name: string, bio: string, birth: number, death: number): void {
+    this.dialog.open(DirectorComponent, {
+      data: { name, bio, birth, death },
+    });
+  }
+
+  showSynopsis(title: string, description: string): void {
+    this.dialog.open(SynopsisComponent, {
+      data: { title, description },
+    });
+  }
+
 }

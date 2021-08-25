@@ -2,26 +2,66 @@
   background-color: black;
   color: white;
   padding: 10px 20px;
-  margin-top: 5px;
+  margin: 20px auto;
+  max-width: 1300px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .favorite-container {
   background-color: black;
   color: white;
   padding: 10px 20px;
-  margin-top: 5px;
+  margin: 20px auto;
+  max-width: 1300px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .card-container {
   display: grid;
-  padding: 0 10px;
   margin-top: 10px;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .card {
   background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  box-shadow: 2px 2px 3px 2px rgb(196, 193, 193);
+  border-radius: 10px;
   color: white;
+}
+
+button {
+  font-size: 1em;
+  font-weight: 500;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+button:hover {
+  color: rgb(202, 191, 191);
+}
+
+.title {
+  font-size: 1.2em;
+  line-height: 1.2em;
+}
+
+.director {
+  color: white;
+}
+
+.card-header {
+  justify-content: center;
+  text-align: center;
+}
+
+img {
+  width: 200px;
+  height: auto;
+  max-height: 350px;
 }
