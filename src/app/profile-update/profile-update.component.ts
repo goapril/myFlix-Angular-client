@@ -27,8 +27,9 @@ export class ProfileUpdateComponent implements OnInit {
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((resp) => {
       this.dialogRef.close();
-      localStorage.setItem('user', this.userData.Username);
-      window.location.reload();
+      //localStorage.setItem('user', this.userData.Username);
+      localStorage.setItem('user', resp.user.Username);
+      //window.location.reload();
         this.snackBar.open('Profile is updated successfully!', 'OK', {
         duration: 2000
         });  
