@@ -69,7 +69,12 @@
             color="primary"
             (click)="showSynopsis(
               favorite.Title, 
-              favorite.Description
+              favorite.Description,
+              favorite.Director.Name,
+              favorite.Genre.Name,
+              favorite.ReleaseYear,
+              favorite.ImdbRating,
+              favorite.Actors
             )"
           >
             Synopsis

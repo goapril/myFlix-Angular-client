@@ -89,9 +89,9 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  showSynopsis(title: string, description: string): void {
+  showSynopsis(title: string, description: string, director: string, genre: string, releaseYear: number, imdbRating: number, actors: string): void {
     this.dialog.open(SynopsisComponent, {
-      data: { title, description },
+      data: { title, description, director, genre, releaseYear, imdbRating, actors },
     });
   }
 
