@@ -13,6 +13,7 @@ import { SynopsisComponent } from '../synopsis/synopsis.component';
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
+  favoriteMovieIds: any[] = [];
  
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -27,8 +28,16 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  getFavoriteMovies(): void {
+    this.fetchApiData.getUser().subscribe((response: any) => {
+      this.favoriteMovieIds = response.FavoriteMovies;
+      return this.favoriteMovieIds;
+    });
+  }
+
   ngOnInit(): void {
     this.getMovies();
+    this.getFavoriteMovies();
   }
 
   showGenre(name: string, description: string): void {
@@ -43,17 +52,33 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  showSynopsis(title: string, description: string): void {
+  showSynopsis(title: string, description: string, director: string, genre: string, releaseYear: number, imdbRating: number, actors: string): void {
     this.dialog.open(SynopsisComponent, {
-      data: { title, description },
+      data: { title, description, director, genre, releaseYear, imdbRating, actors },
     });
   }
 
-  addFavoriteMovie(id: string): void {
-    this.fetchApiData.addFavoriteMovie(id).subscribe(() => {
-      this.snackBar.open(`Movie has been added to your favorites!`, 'OK', {
-        duration: 2000,
+  isFavorite(movieID: string): boolean {
+    const favmovie = this.favoriteMovieIds.includes(movieID);
+    return favmovie;
+  };
+
+  onToggleFavoriteMovie(id: string): any {
+    if (this.isFavorite(id)) {
+      this.fetchApiData.deleteMovie(id).subscribe((response: any) => {
+        this.snackBar.open('Removed from favorites!', 'OK', {
+          duration: 2000,
+        });
       });
-    });
+      const index = this.favoriteMovieIds.indexOf(id);
+      return this.favoriteMovieIds.splice(index, 1);
+    } else {
+      this.fetchApiData.addFavoriteMovie(id).subscribe((response: any) => {
+        this.snackBar.open('Added to favorites!', 'OK', {
+          duration: 2000,
+        });
+      });
+    }
+    return this.favoriteMovieIds.push(id);
   }
 }
