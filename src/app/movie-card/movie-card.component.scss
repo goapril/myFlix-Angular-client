@@ -1,25 +1,44 @@
 .container {
   display: grid;
-  padding: 0 10px;
-  margin-top: 10px;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2vw;
+  //padding: 0 1em;
+  margin: 30px auto;
+  max-width: 1200px;
+  grid-auto-rows: 600px;
 }
 
-.images {
-  padding: 0 10%;
+.center {
+  justify-content: center;
+  text-align: center;
 }
 
-.card {
+.title {
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+
+.card-container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   background-color: black;
+  box-shadow: 2px 2px 3px 2px rgb(196, 193, 193);
+  border-radius: 10px;
   color: white;
+}
+
+img {
+  width: 200px;
+  height: auto;
+  max-height: 350px;
 }
 
 .director {
   color: white;
 }
-
 
 .links {
   display: flex;
@@ -27,4 +46,13 @@
 
 .favorite-button {
   transform: scale(1.2);
+}
+
+button {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+button:hover {
+  color: rgb(202, 191, 191);
 }
