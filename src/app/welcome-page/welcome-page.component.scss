@@ -9,4 +9,15 @@
 
 .welcome-note{
   font-weight: 900;
+  font-size: 3em;
+}
+
+button {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 30px auto;
+}
+
+button:hover {
+  color: rgb(202, 191, 191);
 }

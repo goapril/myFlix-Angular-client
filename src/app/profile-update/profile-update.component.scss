@@ -2,13 +2,12 @@
   background-color: black;
 }
 
-.text {
-  color: white;
-  padding: 5px 20px;
-  font-size: 1rem;
-}
-
 .close {
   color: red;
-  padding: 0 20px;
+  //padding: 0 20px;
+  margin: 5px;
+}
+
+.card-title {
+  justify-content: center;
 }
