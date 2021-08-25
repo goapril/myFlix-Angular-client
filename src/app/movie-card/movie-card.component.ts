@@ -12,10 +12,8 @@ import { SynopsisComponent } from '../synopsis/synopsis.component';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
-  user: any = {};
   movies: any[] = [];
-  favoriteMovieIds: any[] = [];
-
+ 
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
