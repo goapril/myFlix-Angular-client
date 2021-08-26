@@ -46,11 +46,20 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  filterFavorites(): void {
+  /*filterFavorites(): void {
     this.favorites = this.movies.filter((movie: any) =>
       this.user.FavoriteMovies.includes(movie._id)
     );
     console.log(this.user.FavoriteMovies);
+    return this.favorites;
+  }*/
+
+  filterFavorites(): void {
+    this.movies.forEach((movie: any) => {
+      if (this.user.FavoriteMovies.includes(movie._id)) {
+        this.favorites.push(movie);
+      }
+    });
     return this.favorites;
   }
 
