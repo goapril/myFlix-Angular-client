@@ -75,8 +75,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   editUser(): void {
-    this.dialog.open(ProfileUpdateComponent, {
+    const dialogRef = this.dialog.open(ProfileUpdateComponent, {
       width: '280px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getUser();
     });
   }
 

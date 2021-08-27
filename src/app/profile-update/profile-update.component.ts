@@ -26,10 +26,8 @@ export class ProfileUpdateComponent implements OnInit {
 
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((resp) => {
+      localStorage.setItem('user', this.userData.Username);
       this.dialogRef.close();
-      //localStorage.setItem('user', this.userData.Username);
-      localStorage.setItem('user', resp.user.Username);
-      //window.location.reload();
         this.snackBar.open('Profile is updated successfully!', 'OK', {
         duration: 2000
         });  
@@ -38,8 +36,5 @@ export class ProfileUpdateComponent implements OnInit {
         duration: 2000
       });
     });
-    setTimeout(function () {
-      window.location.reload();
-    }, 1000);
   }
 }
