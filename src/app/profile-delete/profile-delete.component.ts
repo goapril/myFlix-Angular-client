@@ -9,7 +9,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./profile-delete.component.scss']
 })
 export class ProfileDeleteComponent implements OnInit {
-
+  /**
+  * @param fetchApiData
+  * @param snackBar
+  * @param router
+  */
   constructor(
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
@@ -19,6 +23,9 @@ export class ProfileDeleteComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+  * This method will delete user's account from the database
+  */
   deleteUser(): void {
     this.fetchApiData.deleteUser().subscribe(() => {
       this.snackBar.open('Your account has been deleted!', 'OK',
@@ -35,6 +42,9 @@ export class ProfileDeleteComponent implements OnInit {
     );
   }
 
+  /**
+  * This method will give user an option to cancel deletion of account
+  */
   cancel(): void {
     this.router.navigate(['/profile']).then(() => {
       window.location.reload();

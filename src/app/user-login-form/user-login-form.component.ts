@@ -1,10 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-// You'll use this import to close the dialog on success
-import { MatDialogRef } from '@angular/material/dialog';
-// This import brings in the API calls we created in 6.2
+
+// Angular Material
+import { MatDialogRef } from '@angular/material/dialog'; // You'll use this import to close the dialog on success
+import { MatSnackBar } from '@angular/material/snack-bar'; // This import is used to display notifications back to the user
+
+// API Service
 import { FetchApiDataService } from '../fetch-api-data.service';
-// This import is used to display notifications back to the user
-import { MatSnackBar } from '@angular/material/snack-bar';
+
+// Angular router
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,6 +18,12 @@ import { Router } from '@angular/router';
 export class UserLoginFormComponent implements OnInit {
   @Input() userData = { Username: '', Password: '' };
   
+  /**
+  * @param fetchApiData
+  * @param dialogRef
+  * @param snackBar
+  * @param router
+  */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -24,7 +33,9 @@ export class UserLoginFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // This is the function responsible for sending the form inputs to the backend
+  /** 
+  *  This is the function responsible for sending the form inputs to the backend
+  */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
       // Store current user and token in localStorage.

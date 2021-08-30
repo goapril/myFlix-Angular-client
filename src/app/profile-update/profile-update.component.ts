@@ -13,6 +13,12 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ProfileUpdateComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
+  /**
+  * @param data
+  * @param fetchApiData
+  * @param dialogRef
+  * @param snackBar
+  */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { onSuccess: () => void },
@@ -24,6 +30,9 @@ export class ProfileUpdateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+  * This method will will send input data to database and will upadate user account details
+  */
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((resp) => {
       localStorage.setItem('user', this.userData.Username);
