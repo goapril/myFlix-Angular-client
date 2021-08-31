@@ -61,10 +61,10 @@ export class MovieCardComponent implements OnInit {
   }
 
   /**
-  * Opens modal with movie genre details
-  * @param name
-  * @param description
-  */
+   * Opens modal with movie genre details
+   * @param name
+   * @param description
+   */
   showGenre(name: string, description: string): void {
     this.dialog.open(GenreComponent, {
       data: { name, description },
@@ -72,12 +72,12 @@ export class MovieCardComponent implements OnInit {
   }
 
   /**
-  * Opens modal with movie director details
-  * @param name
-  * @param bio
-  * @param birth
-  * @param death
-  */
+   * Opens modal with movie director details
+   * @param name
+   * @param bio
+   * @param birth
+   * @param death
+   */
   showDirector(name: string, bio: string, birth: number, death: number): void {
     this.dialog.open(DirectorComponent, {
       data: { name, bio, birth, death },
@@ -85,15 +85,15 @@ export class MovieCardComponent implements OnInit {
   }
 
   /**
-  * Opens modal with movie synopsis
-  * @param title
-  * @param description
-  * @param director
-  * @param genre
-  * @param releaseYear
-  * @param imdbRating
-  * @param actors
-  */
+   * Opens modal with movie synopsis
+   * @param title
+   * @param description
+   * @param director
+   * @param genre
+   * @param releaseYear
+   * @param imdbRating
+   * @param actors
+   */
   showSynopsis(title: string, description: string, director: string, genre: string, releaseYear: number, imdbRating: number, actors: string): void {
     this.dialog.open(SynopsisComponent, {
       data: { title, description, director, genre, releaseYear, imdbRating, actors },
@@ -101,18 +101,19 @@ export class MovieCardComponent implements OnInit {
   }
 
   /**
-  * Adds or removes movie from user's list of favorites
-  * @param movieID
-  */
+   * Adds or removes movie from user's list of favorites
+   * @param movieID
+   */
   isFavorite(movieID: string): boolean {
     const favmovie = this.favoriteMovieIds.includes(movieID);
     return favmovie;
   };
 
-  /** 
-  * Adds or removes movie from user's list of favorites
-  * @param id
-  */
+  /**
+   * Adds or removes movie from user's list of favorites
+   * @param id 
+   * @returns favorite movies
+   */
   onToggleFavoriteMovie(id: string): any {
     if (this.isFavorite(id)) {
       this.fetchApiData.deleteMovie(id).subscribe((response: any) => {

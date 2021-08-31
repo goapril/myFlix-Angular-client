@@ -17,10 +17,11 @@ export class UserRegistrationFormComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   /**
-  * @param fetchApiData 
-  * @param dialogRef 
-  * @param snackBar 
-  */
+   * 
+   * @param fetchApiData 
+   * @param dialogRef 
+   * @param snackBar 
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
@@ -30,8 +31,8 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {}
 
   /**
-  *This is the function responsible for sending the form inputs to the backend
-  */
+   *This is the function responsible for sending the form inputs to the backend
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((response) => {
       // Logic for a successful user registration goes here!

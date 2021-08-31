@@ -28,10 +28,11 @@ export class UserProfileComponent implements OnInit {
   favorites: any = [];
 
   /**
-  * @param fetchApiData 
-  * @param dialog
-  * @param snackBar 
-  */
+   * 
+   * @param fetchApiData 
+   * @param dialog 
+   * @param snackBar 
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
@@ -39,17 +40,17 @@ export class UserProfileComponent implements OnInit {
   ) { }
   
   /**
-  * ngOnInit() is a place to put the code that we need to execute at very first as soon as the class is instantiated
-  * This method will run the getUser method after the User Profile Component is initialised and rendered.
-  * @returns User object.
-  */
+   * ngOnInit() is a place to put the code that we need to execute at very first as soon as the class is instantiated
+   * This method will run the getUser method after the User Profile Component is initialised and rendered.
+   * @returns User object.
+   */
   ngOnInit(): void {
     this.getUser();
   }
 
   /**
-  * This method will get user details and array of user's favorite movies
-  */
+   * This method will get user details and array of user's favorite movies
+   */
   getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
@@ -59,8 +60,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   /**
-  * This method will get user's favorite movie array
-  */
+   * This method will get user's favorite movie array
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -69,10 +70,11 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  
   /**
-  * This method filters user's movies
-  * @param movie_id
-  **/ 
+   * This method filters user's movies
+   * @returns favorite movies
+   */
   filterFavorites(): void {
     this.movies.forEach((movie: any) => {
       if (this.user.FavoriteMovies.includes(movie._id)) {
@@ -82,9 +84,12 @@ export class UserProfileComponent implements OnInit {
     return this.favorites;
   }
 
+
   /**
-  * This method will delete a movie from user's favorite movies
-  */
+   * This method will delete a movie from user's favorite movies
+   * @param id 
+   * @param title 
+   */
   deleteMovie(id: string, title: string): void {
     this.fetchApiData.deleteMovie(id).subscribe((resp: any) => {
       this.snackBar.open(`${title} has been removed from your favorites!`, 'OK', {
@@ -97,8 +102,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   /**
-  * This method will update user's profile data
-  */
+   * This method will update user's profile data
+   */
   editUser(): void {
     const dialogRef = this.dialog.open(ProfileUpdateComponent, {
       width: '280px'
@@ -109,8 +114,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   /**
-  * Deletes user's account
-  */ 
+   * Deletes user's account
+   */ 
   deleteUser(): void {
     this.dialog.open(ProfileDeleteComponent, {
       width: '280px'
@@ -118,10 +123,10 @@ export class UserProfileComponent implements OnInit {
   }
 
   /**
-  * @param name
-  * @param description
-  * Opens modal with movie genre information
-  */ 
+   * Opens modal with movie genre information
+   * @param name 
+   * @param description 
+   */
   showGenre(name: string, description: string): void {
     this.dialog.open(GenreComponent, {
       data: { name, description },
@@ -129,12 +134,12 @@ export class UserProfileComponent implements OnInit {
   }
 
   /**
-  * @param name
-  * @param bio
-  * @param birth
-  * @param death
-  * Opens modal with movie director information
-  */ 
+   * Opens modal with movie director information
+   * @param name 
+   * @param bio 
+   * @param birth 
+   * @param death 
+   */
   showDirector(name: string, bio: string, birth: number, death: number): void {
     this.dialog.open(DirectorComponent, {
       data: { name, bio, birth, death },
@@ -142,19 +147,18 @@ export class UserProfileComponent implements OnInit {
   }
 
   /**
-  * @param title
-  * @param description
-  * @param director
-  * @param genre
-  * @param releaseYear
-  * @param imdbRating
-  * @param actors
-  * Opens modal with movie synopsis
-  */ 
+   * Opens modal with movie synopsis
+   * @param title 
+   * @param description 
+   * @param director 
+   * @param genre 
+   * @param releaseYear 
+   * @param imdbRating 
+   * @param actors 
+   */
   showSynopsis(title: string, description: string, director: string, genre: string, releaseYear: number, imdbRating: number, actors: string): void {
     this.dialog.open(SynopsisComponent, {
       data: { title, description, director, genre, releaseYear, imdbRating, actors },
     });
   }
-
 }
